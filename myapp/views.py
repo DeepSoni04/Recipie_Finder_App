@@ -52,7 +52,11 @@ def search(request):
 def singlepage(request,id):
     print(id)
     response = requests.get(f"https://dummyjson.com/recipes/{id}").json()
+    # Fetch more recipes for the "More Recipes" section
+    all_recipes = requests.get("https://dummyjson.com/recipes?limit=50").json()
+    recommended = [r for r in all_recipes["recipes"] if r["id"] != id][:3]
     context = {
         "data":response,
+        "recommended": recommended,
     }
-    return render(request,"receipes.html",context)
+    return render(request,"receipes.html",context)

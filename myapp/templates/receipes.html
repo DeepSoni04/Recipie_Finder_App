@@ -217,60 +217,28 @@
                 
                 <!-- Recommended Recipes -->
                 <div class="mb-5">
-                    <h3 class="mb-4 fw-bold">More Italian Recipes</h3>
+                    <h3 class="mb-4 fw-bold">More Recipes</h3>
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <!-- Recipe Card 1 -->
+                        {% for recipe in recommended %}
                         <div class="col">
                             <div class="card recommended-card h-100">
-                                <img src="https://cdn.dummyjson.com/recipe-images/2.webp" class="card-img-top recommended-img" alt="Pepperoni Pizza">
+                                <img src="{{ recipe.image }}" class="card-img-top recommended-img" alt="{{ recipe.name }}">
                                 <div class="card-body">
-                                    <h5 class="card-title">Pepperoni Pizza</h5>
+                                    <h5 class="card-title">{{ recipe.name }}</h5>
                                     <div class="d-flex justify-content-between">
-                                        <span class="text-muted small"><i class="fas fa-clock me-1"></i>25 mins</span>
-                                        <span class="text-muted small"><i class="fas fa-star text-warning me-1"></i>4.8</span>
+                                        <span class="text-muted small"><i class="fas fa-clock me-1"></i>{{ recipe.cookTimeMinutes }} mins</span>
+                                        <span class="text-muted small"><i class="fas fa-star text-warning me-1"></i>{{ recipe.rating }}</span>
                                     </div>
                                 </div>
                                 <div class="card-footer bg-transparent">
-                                    <a href="/single/2" class="btn btn-sm btn-outline-primary w-100">View Recipe</a>
+                                    <a href="/single/{{ recipe.id }}" class="btn btn-sm btn-outline-primary w-100">View Recipe</a>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- Recipe Card 2 -->
-                        <div class="col">
-                            <div class="card recommended-card h-100">
-                                <img src="https://cdn.dummyjson.com/recipe-images/3.webp" class="card-img-top recommended-img" alt="Vegetable Pasta">
-                                <div class="card-body">
-                                    <h5 class="card-title">Vegetable Pasta</h5>
-                                    <div class="d-flex justify-content-between">
-                                        <span class="text-muted small"><i class="fas fa-clock me-1"></i>20 mins</span>
-                                        <span class="text-muted small"><i class="fas fa-star text-warning me-1"></i>4.5</span>
-                                    </div>
-                                </div>
-                                <div class="card-footer bg-transparent">
-                                    <a href="/single/3" class="btn btn-sm btn-outline-primary w-100">View Recipe</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Recipe Card 3 -->
-                        <div class="col">
-                            <div class="card recommended-card h-100">
-                                <img src="https://cdn.dummyjson.com/recipe-images/4.webp" class="card-img-top recommended-img" alt="Garlic Bread">
-                                <div class="card-body">
-                                    <h5 class="card-title">Garlic Bread</h5>
-                                    <div class="d-flex justify-content-between">
-                                        <span class="text-muted small"><i class="fas fa-clock me-1"></i>15 mins</span>
-                                        <span class="text-muted small"><i class="fas fa-star text-warning me-1"></i>4.7</span>
-                                    </div>
-                                </div>
-                                <div class="card-footer bg-transparent">
-                                    <a href="/single/4" class="btn btn-sm btn-outline-primary w-100">View Recipe</a>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
